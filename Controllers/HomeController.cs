@@ -15,7 +15,19 @@ namespace Mission08_7Habbits_App.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+
+            var Quadrant1 = _context.Movies
+               (x => x.Mission08_Quadrant == 1).ToList();
+            var Quadrant2 = _context.Movies
+              (x => x.Mission08_Quadrant == 2).ToList();
+            var Quadrant3 = _context.Movies
+              (x => x.Mission08_Quadrant == 3).ToList();
+            var Quadrant4 = _context.Movies
+              (x => x.Mission08_Quadrant == 4).ToLitst;
+
+            return View(Quadrant1, Quadrant2, Quadrant3, Quadrant4);
+           
         }
 
         public IActionResult Create_Tasks()
