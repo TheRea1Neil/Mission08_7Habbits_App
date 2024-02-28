@@ -18,7 +18,12 @@ namespace Mission08_7Habbits_App.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Create_Tasks()
+        {
+            return View();
+        }
+
+        public IActionResult Quadrants()
         {
             return View();
         }
