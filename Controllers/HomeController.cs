@@ -6,11 +6,11 @@ namespace Mission08_7Habbits_App.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private HighHabitsContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(HighHabitsContext context) //Constructor
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
