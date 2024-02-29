@@ -17,17 +17,17 @@ namespace Mission08_7Habbits_App.Controllers
         {
 
 
-        //    var Quadrant1 = _context.Mission08_7Habbits_App
-        //       (x => x.Quadrant == 1).ToList();
-        //    var Quadrant2 = _context.Mission08_7Habbits_App
-        //      (x => x.Quadrant == 2).ToList();
-        //    var Quadrant3 = _context.Mission08_7Habbits_App
-        //      (x => x.Quadrant == 3).ToList();
-        //    var Quadrant4 = _context.Mission08_7Habbits_App
-        //      (x => x.Quadrant == 4).ToLitst;
+            var Quadrant1 = _context.Tasks
+              (x => x.Quadrant == 1).ToList();
+            var Quadrant2 = _context.Tasks
+              (x => x.Quadrant == 2).ToList();
+            var Quadrant3 = _context.Tasks
+              (x => x.Quadrant == 3).ToList();
+            var Quadrant4 = _context.Tasks
+              (x => x.Quadrant == 4).ToLitst;
 
-        //    return View(Quadrant1, Quadrant2, Quadrant3, Quadrant4);
-           return View();
+            return View(Quadrant1, Quadrant2, Quadrant3, Quadrant4);
+            
         }
 
         public IActionResult Create_Tasks()
