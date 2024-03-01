@@ -1,8 +1,194 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Task>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .quadrant-matrix {
+        border: 1px solid black; /* Border around the entire matrix */
+        display: flex; /* Use flexbox to manage quadrants */
+        flex-wrap: wrap; /* Wrap quadrants to form two rows */
+    }
+
+    .quadrant {
+        flex-basis: 50%; /* Each quadrant takes up 50% of the matrix width */
+        box-sizing: border-box; /* Border and padding are included in the width */
+        height: 200px; /* Adjust the height as necessary */
+        display: flex; /* Use flexbox to manage the layout of the card */
+    }
+
+        .quadrant:not(:nth-child(2)), .quadrant:not(:last-child) {
+            border-right: 1px solid black; /* Vertical line for each quadrant except the second and the last */
+        }
+
+        .quadrant:nth-child(-n+2) { /* Only the first two quadrants */
+            border-bottom: 1px solid black; /* Horizontal line between the rows */
+        }
+
+    .card {
+        flex-grow: 1; /* Card expands to fill the quadrant */
+        border-radius: 0; /* Remove rounded corners */
+        border: none; /* Remove the card's own border */
+    }
+
+    .card-header {
+        background-color: rgba(0,0,0,.03);
+        border-bottom: 1px solid rgba(0,0,0,.125);
+        margin-bottom: 0; /* Remove any margin below the header */
+    }
+
+    /* This ensures the content of the card stretches to the edges */
+    .card-body {
+        padding: 0.75rem; /* Restore some padding inside the card body */
+        width: 100%; /* Ensure the card body takes up the entire quadrant width */
+    }
+</style>
+
+<div class="container-fluid p-0">
+    <div class="quadrant-matrix">
+        <!-- Quadrant I: Important / Urgent -->
+        <div class="quadrant">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Quadrant I: Important / Urgent
+                </div>
+                <div class="card-body">
+                    <!-- Tasks for Quadrant I -->
+                    <table class="table table-bordered">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td>Title</td>
+                                <td>Due Date</td>
+                                <td>CategoryId</td>
+                                <td>Completed</td>
+                            </tr>
+                        </thead>
+
+                        @foreach (var x in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>@x.Title</td>
+                                    <td>@x.DueDate</td>
+                                    <td>@x.CategoryId</td>
+                                    <td>@x.Completed</td>
+
+                                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a></td>
+                                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quadrant II: Important / Not Urgent -->
+        <div class="quadrant">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Quadrant II: Important / Not Urgent
+                </div>
+                <div class="card-body">
+                    <!-- Tasks for Quadrant II -->
+                    <table class="table table-bordered">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td>Title</td>
+                                <td>Due Date</td>
+                                <td>CategoryId</td>
+                                <td>Completed</td>
+                            </tr>
+                        </thead>
+
+@*                         @foreach (var x in Model)
+                        {
+                        <tbody>
+                        <tr>
+                        <td>@x.Title</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category</td>
+                        <td>@x.Completed</td>
+
+                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
+                        </tr>
+                        </tbody>
+                        } *@
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quadrant III: Not Important / Urgent -->
+        <div class="quadrant">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    Quadrant III: Not Important / Urgent
+                </div>
+                <div class="card-body">
+                    <!-- Tasks for Quadrant III -->
+                    <table class="table table-bordered">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td>Title</td>
+                                <td>Due Date</td>
+                                <td>CategoryId</td>
+                                <td>Completed</td>
+                            </tr>
+                        </thead>
+
+@*                         @foreach (var x in Model)
+                        {
+                        <tbody>
+                        <tr>
+                        <td>@x.Title</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category</td>
+                        <td>@x.Completed</td>
+
+                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
+                        </tr>
+                        </tbody>
+                        } *@
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quadrant IV: Not Important / Not Urgent -->
+        <div class="quadrant">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Quadrant IV: Not Important / Not Urgent
+                </div>
+                <div class="card-body">
+                    <!-- Tasks for Quadrant IV -->
+                    <table class="table table-bordered">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td>Title</td>
+                                <td>Due Date</td>
+                                <td>CategoryId</td>
+                                <td>Completed</td>
+                            </tr>
+                        </thead>
+
+@*                         @foreach (var x in Model)
+                        {
+                        <tbody>
+                        <tr>
+                        <td>@x.Title</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category</td>
+                        <td>@x.Completed</td>
+
+                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
+                        </tr>
+                        </tbody>
+                        } *@
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
