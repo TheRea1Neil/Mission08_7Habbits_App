@@ -26,21 +26,21 @@ public partial class HighHabitsContext : DbContext
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.Property(e => e.CategoryId)
+            entity.Property(e => e.CategoryID)
                 .ValueGeneratedNever()
                 .HasColumnName("CategoryID");
         });
 
         modelBuilder.Entity<Task>(entity =>
         {
-            entity.Property(e => e.TaskId)
+            entity.Property(e => e.TaskID)
                 .ValueGeneratedNever()
                 .HasColumnName("TaskID");
-            entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+            entity.Property(e => e.CategoryID).HasColumnName("CategoryID");
             entity.Property(e => e.Completed).HasColumnType("BOOLEAN");
             entity.Property(e => e.DueDate).HasColumnType("DATETIME");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.Tasks).HasForeignKey(d => d.CategoryId);
+            entity.HasOne(d => d.Category).WithMany(p => p.Tasks).HasForeignKey(d => d.CategoryID);
         });
 
         OnModelCreatingPartial(modelBuilder);

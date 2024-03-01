@@ -16,28 +16,21 @@ namespace Mission08_7Habbits_App.Controllers
         {
             _repo = context;
         }
-        public class TasksViewModel
-        {
-            public List<Models.Task> Quadrant1 { get; set; }
-            public List<Models.Task> Quadrant2 { get; set; }
-            public List<Models.Task> Quadrant3 { get; set; }
-            public List<Models.Task> Quadrant4 { get; set; }
-        }
+       
 
 
         public IActionResult Index()
         {
 
 
-            var viewModel = new TasksViewModel
-            {
-                Quadrant1 = _repo.Tasks.Where(x => x.Quadrant == 1).ToList(),
-                Quadrant2 = _repo.Tasks.Where(x => x.Quadrant == 2).ToList(),
-                Quadrant3 = _repo.Tasks.Where(x => x.Quadrant == 3).ToList(),
-                Quadrant4 = _repo.Tasks.Where(x => x.Quadrant == 4).ToList()
-            };
 
-            return View(viewModel);
+            ViewBag.Quadrant1 = _repo.Tasks.Where(x => x.Quadrant == 1).ToList();
+            ViewBag.Quadrant2 = _repo.Tasks.Where(x => x.Quadrant == 2).ToList();
+            ViewBag.Quadrant3 = _repo.Tasks.Where(x => x.Quadrant == 3).ToList();
+            ViewBag.Quadrant4 = _repo.Tasks.Where(x => x.Quadrant == 4).ToList();
+            
+
+            return View();
         }
 
         //        <h2>Quadrant 1 Tasks</h2>
@@ -55,7 +48,7 @@ namespace Mission08_7Habbits_App.Controllers
         public IActionResult Edit(int id)
         {
             var recordToEdit = _repo.Tasks
-                .Single(x => x.TaskId == id);
+                .Single(x => x.TaskID == id);
 
             ViewBag.Categories = _repo.Categories.ToList();
 
@@ -69,20 +62,22 @@ namespace Mission08_7Habbits_App.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var recordToDelete = _repo.Tasks.Single(x => x.TaskId == id);
-            return View(recordToDelete);
-        }
         [HttpPost]
-        public IActionResult Delete(Models.Task task)
+        public IActionResult Delete(int taskId)
         {
-            _repo.Tasks.Remove(task);
-            _repo.SaveChanges();
+            Console.Write(taskId);
+            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == taskId);
+            if (recordToDelete != null)
+            {
+                _repo.Tasks.Remove(recordToDelete);
+                _repo.SaveChanges();
+            }
+            else
+            {
+                Console.Write("test");
+            }
 
             return RedirectToAction("Index");
-
         }
 
 

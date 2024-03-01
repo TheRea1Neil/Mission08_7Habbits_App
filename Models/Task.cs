@@ -5,7 +5,7 @@ namespace Mission08_7Habbits_App.Models;
 
 public partial class Task
 {
-    public int TaskId { get; set; }
+    public int TaskID { get; set; }
 
     public string Title { get; set; } = null!;
 
@@ -13,7 +13,7 @@ public partial class Task
 
     public int Quadrant { get; set; }
 
-    public int? CategoryId { get; set; }
+    public int? CategoryID { get; set; }
 
     public bool Completed { get; set; }
 

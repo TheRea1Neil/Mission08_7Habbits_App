@@ -8,5 +8,7 @@
         void SaveChanges(bool v);
         void SaveChanges();
         void Update(Task update);
+
+        void Remove(Task category);
     }
 }

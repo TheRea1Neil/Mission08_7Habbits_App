@@ -5,7 +5,7 @@ namespace Mission08_7Habbits_App.Models;
 
 public partial class Category
 {
-    public int CategoryId { get; set; }
+    public int CategoryID { get; set; }
 
     public string CatName { get; set; } = null!;
 

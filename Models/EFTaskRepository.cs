@@ -30,5 +30,11 @@ namespace Mission08_7Habbits_App.Models
         {
            _context.Update(update);
         }
+
+        public void Remove(Task recordToDelete)
+        {
+            _context.Tasks.Remove(recordToDelete);
+        }
+       
     }
 }
