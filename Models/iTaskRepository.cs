@@ -5,10 +5,12 @@
         List<Task> Tasks { get; }
         List<Category> Categories { get; }
 
-        void SaveChanges(bool v);
-        void SaveChanges();
-        void Update(Task update);
+        public void AddTask(Task task);
+        public void SaveChanges(bool v);
+        public void SaveChanges();
+        List<Task> Include(Task task);
+        public void Update(Task update);
 
-        void Remove(Task category);
+        public void Remove(Task category);
     }
 }

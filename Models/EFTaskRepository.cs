@@ -35,6 +35,16 @@ namespace Mission08_7Habbits_App.Models
         {
             _context.Tasks.Remove(recordToDelete);
         }
-       
+
+        public List<Task> Include(Task task)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddTask(Task task)
+        {
+            _context.Add(task);
+            _context.SaveChanges();
+        }
     }
 }

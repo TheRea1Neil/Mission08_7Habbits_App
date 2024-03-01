@@ -1,7 +1,7 @@
 ﻿@model Mission08_7Habbits_App.Models.Task
 
 @{
-    ViewData["Title"] = "Add New Task";
+    ViewData["Title"] = "Create New Task";
 }
 
 <div class="container">
@@ -15,7 +15,7 @@
         <br />
         <div class="form group">
             <label asp-for="DueDate">DueDate:</label>
-            <input value="ex.03/01/2024" asp-for="DueDate"/>
+            <input asp-for="DueDate"/>
         </div>
         <br />
         <div class="form group">
@@ -30,13 +30,13 @@
         <br />
         <div class="form group">
             <label asp-for="CategoryID">Category:</label>
-            @* <select asp-for ="CategoryID">
+            <select asp-for="CategoryID">
                 <option value="">Select a Category</option>
-                @foreach (Category category in Model.Category)
+                @foreach (Category category in ViewBag.Categories)
                 {
                     <option value="@category.CategoryID">@category.CatName</option>
                 }
-            </select> *@
+            </select>
         </div>
         <br />
         <div class="form group">

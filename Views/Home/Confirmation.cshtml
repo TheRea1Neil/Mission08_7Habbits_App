@@ -1,0 +1,44 @@
+﻿@model Mission08_7Habbits_App.Models.Task
+
+@{
+    ViewData["Title"] = "Save Confirmation";
+}
+
+<h1>Save Successfully!</h1>
+
+<br />
+<br>
+
+<div class="card-body">
+    <!-- Tasks for Quadrant I -->
+    <table class="table table-bordered">
+        <thead class="fw-bold">
+            <tr>
+                <td>Title</td>
+                <td>Due Date</td>
+                <td>Category</td>
+                <td>Completed</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Title</td>
+                <td>@Model.DueDate</td>
+                <td>
+                    @if (@Model.CategoryID != null)
+                    {
+                        @ViewBag.category.CatName;
+                    }
+                </td>
+            @if (@Model.Completed == true)
+            {
+                <td>Yes</td>
+            }
+            else
+            {
+                <td>No</td>
+            }
+            </tr>
+        </tbody>
+    </table>
+</div>
