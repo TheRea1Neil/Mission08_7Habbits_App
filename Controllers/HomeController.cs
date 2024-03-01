@@ -66,7 +66,7 @@ namespace Mission08_7Habbits_App.Controllers
         public IActionResult Delete(int taskId)
         {
             Console.Write(taskId);
-            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == taskId);
+            var recordToDelete = _repo.Tasks.SingleOrDefault(x => x.TaskID == taskId);
             if (recordToDelete != null)
             {
                 _repo.Tasks.Remove(recordToDelete);
