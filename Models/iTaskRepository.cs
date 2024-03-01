@@ -3,5 +3,10 @@
     public interface iTaskRepository
     {
         List<Task> Tasks { get; }
+        List<Category> Categories { get; }
+
+        void SaveChanges(bool v);
+        void SaveChanges();
+        void Update(Task update);
     }
 }

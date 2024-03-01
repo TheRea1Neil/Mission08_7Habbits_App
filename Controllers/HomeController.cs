@@ -10,9 +10,9 @@ namespace Mission08_7Habbits_App.Controllers
 {
     public class HomeController : Controller
     {
-        private iHabitsRepository _repo;
+        private iTaskRepository _repo;
 
-        public HomeController(iHabitsRepository context) //Constructor
+        public HomeController(iTaskRepository context) //Constructor
         {
             _repo = context;
         }
