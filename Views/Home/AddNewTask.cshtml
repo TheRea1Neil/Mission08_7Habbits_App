@@ -1,4 +1,4 @@
-﻿@model Task
+﻿@model Mission08_7Habbits_App.Models.Task
 
 @{
     ViewData["Title"] = "Add New Task";
@@ -30,13 +30,13 @@
         <br />
         <div class="form group">
             <label asp-for="CategoryID">Category:</label>
-            <select asp-for ="CategoryID">
+            @* <select asp-for ="CategoryID">
                 <option value="">Select a Category</option>
                 @foreach (Category category in Model.Category)
                 {
                     <option value="@category.CategoryID">@category.CatName</option>
                 }
-            </select>
+            </select> *@
         </div>
         <br />
         <div class="form group">
