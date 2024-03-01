@@ -10,11 +10,11 @@ namespace Mission08_7Habbits_App.Controllers
 {
     public class HomeController : Controller
     {
-        private HighHabitsContext _context;
+        private iTaskRepository _repo;
 
-        public HomeController(HighHabitsContext context) //Constructor
+        public HomeController(iTaskRepository context) //Constructor
         {
-            _context = context;
+            _repo = context;
         }
         public class TasksViewModel
         {
@@ -31,10 +31,10 @@ namespace Mission08_7Habbits_App.Controllers
 
             var viewModel = new TasksViewModel
             {
-                Quadrant1 = _context.Tasks.Where(x => x.Quadrant == 1).ToList(),
-                Quadrant2 = _context.Tasks.Where(x => x.Quadrant == 2).ToList(),
-                Quadrant3 = _context.Tasks.Where(x => x.Quadrant == 3).ToList(),
-                Quadrant4 = _context.Tasks.Where(x => x.Quadrant == 4).ToList()
+                Quadrant1 = _repo.Tasks.Where(x => x.Quadrant == 1).ToList(),
+                Quadrant2 = _repo.Tasks.Where(x => x.Quadrant == 2).ToList(),
+                Quadrant3 = _repo.Tasks.Where(x => x.Quadrant == 3).ToList(),
+                Quadrant4 = _repo.Tasks.Where(x => x.Quadrant == 4).ToList()
             };
 
             return View(viewModel);
@@ -46,7 +46,7 @@ namespace Mission08_7Habbits_App.Controllers
         //    < p > @task.Name </ p > < !--Replace with actual property names -->}
         public IActionResult Create_Tasks()
         {
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _repo.Categories.ToList();
             return View();
         }
 
@@ -54,32 +54,32 @@ namespace Mission08_7Habbits_App.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recordToEdit = _context.Tasks
+            var recordToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _repo.Categories.ToList();
 
             return View("Create_Tasks", recordToEdit);
         }
         [HttpPost]
         public IActionResult Edit(Models.Task update)
         {
-            _context.Update(update);
-            _context.SaveChanges(true);
+            _repo.Update(update);
+            _repo.SaveChanges(true);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var recordToDelete = _context.Tasks.Single(x => x.TaskId == id);
+            var recordToDelete = _repo.Tasks.Single(x => x.TaskId == id);
             return View(recordToDelete);
         }
         [HttpPost]
         public IActionResult Delete(Models.Task task)
         {
-            _context.Tasks.Remove(task);
-            _context.SaveChanges();
+            _repo.Tasks.Remove(task);
+            _repo.SaveChanges();
 
             return RedirectToAction("Index");
 
