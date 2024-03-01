@@ -12,6 +12,8 @@ builder.Services.AddDbContext<HighHabitsContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:HighHabitsConnection"]);
 });
 
+builder.Services.AddScoped<iHabitsRepository, efHabitsRepository>();
+
 
 var app = builder.Build();
 
