@@ -1,4 +1,4 @@
-﻿@model List<Task>
+﻿@model 
 
 <style>
     .quadrant-matrix {
@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
 
-                        @foreach (var x in Model)
+                        @foreach (var x in Model.Quadrant1)
                         {
                             <tbody>
                                 <tr>
