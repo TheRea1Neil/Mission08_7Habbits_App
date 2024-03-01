@@ -27,14 +27,14 @@ public partial class HighHabitsContext : DbContext
         modelBuilder.Entity<Category>(entity =>
         {
             entity.Property(e => e.CategoryID)
-                .ValueGeneratedNever()
+                ///.ValueGeneratedNever()   /// I got rid of this so we can add more (this method doesn't allow auto-increment for PK)
                 .HasColumnName("CategoryID");
         });
 
         modelBuilder.Entity<Task>(entity =>
         {
             entity.Property(e => e.TaskID)
-                .ValueGeneratedNever()
+                ///.ValueGeneratedNever()   /// Same here
                 .HasColumnName("TaskID");
             entity.Property(e => e.CategoryID).HasColumnName("CategoryID");
             entity.Property(e => e.Completed).HasColumnType("BOOLEAN");

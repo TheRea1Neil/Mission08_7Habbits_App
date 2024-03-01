@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission08_7Habbits_App.Models;
 
 public partial class Task
 {
     [Key]
-    [Required]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int TaskID { get; set; }
     [Required]
     public string Title { get; set; } = null!;

@@ -59,3 +59,13 @@ body {
     padding: 0.75rem; /* Restore some padding inside the card body */
     width: 100%; /* Ensure the card body takes up the entire quadrant width */
 }
+
+.dynamic-table {
+    width: auto;
+    border-collapse: collapse;
+}
+
+.dynamic-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
