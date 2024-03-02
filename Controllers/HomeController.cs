@@ -93,13 +93,15 @@ namespace Mission08_7Habbits_App.Controllers
         public IActionResult Delete(int id)
         {
             // Delelte the selected task based on TaskID
-            Console.Write(taskId);
-            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == taskId);
+            Console.Write(id);
+            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == id);
             if (recordToDelete != null)
             {
                 _repo.Tasks.Remove(recordToDelete);
                 _repo.SaveChanges();
-          
+
+
+            }          
 
             return RedirectToAction("Index");
         }
