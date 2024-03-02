@@ -20,3 +20,52 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.quadrant-matrix {
+    border: 1px solid black; /* Border around the entire matrix */
+    display: flex; /* Use flexbox to manage quadrants */
+    flex-wrap: wrap; /* Wrap quadrants to form two rows */
+}
+
+.quadrant {
+    flex-basis: 50%; /* Each quadrant takes up 50% of the matrix width */
+    box-sizing: border-box; /* Border and padding are included in the width */
+    height: 200px; /* Adjust the height as necessary */
+    display: flex; /* Use flexbox to manage the layout of the card */
+}
+
+    .quadrant:not(:nth-child(2)), .quadrant:not(:last-child) {
+        border-right: 1px solid black; /* Vertical line for each quadrant except the second and the last */
+    }
+
+    .quadrant:nth-child(-n+2) { /* Only the first two quadrants */
+        border-bottom: 1px solid black; /* Horizontal line between the rows */
+    }
+
+.card {
+    flex-grow: 1; /* Card expands to fill the quadrant */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* Remove the card's own border */
+}
+
+.card-header {
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 0; /* Remove any margin below the header */
+}
+
+/* This ensures the content of the card stretches to the edges */
+.card-body {
+    padding: 0.75rem; /* Restore some padding inside the card body */
+    width: 100%; /* Ensure the card body takes up the entire quadrant width */
+}
+
+.dynamic-table {
+    width: auto;
+    border-collapse: collapse;
+}
+
+.dynamic-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
