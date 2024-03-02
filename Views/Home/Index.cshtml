@@ -88,12 +88,7 @@
 
 
                                         <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
-                                        <td>
-                                            <form asp-action="Delete" asp-controller="Home" method="post">
-                                                <input type="hidden" asp-for="@x.TaskID" />
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                                            </form>
-                                        </td>
+                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
                                     </tr>
                                 </tbody>
                             }
@@ -136,12 +131,7 @@
 
 
                                         <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
-                                        <td>
-                                            <form asp-action="Delete" asp-controller="Home" method="post">
-                                                <input type="hidden" asp-for="@x.TaskID" />
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                                            </form>
-                                        </td>
+                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
                                     </tr>
                                 </tbody>
                             }
@@ -184,12 +174,7 @@
 
 
                                         <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
-                                        <td>
-                                            <form asp-action="Delete" asp-controller="Home" method="post">
-                                                <input type="hidden" asp-for="@x.TaskID" />
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                                            </form>
-                                        </td>
+                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
                                     </tr>
                                 </tbody>
                             }
