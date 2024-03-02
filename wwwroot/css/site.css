@@ -69,3 +69,8 @@ body {
     border: 1px solid #ddd;
     padding: 8px;
 }
+
+.table-wrapper {
+    max-height: 500px; /* Set the max height for the table wrapper */
+    overflow-y: auto; /* Enable vertical scroll */
+}
