@@ -87,20 +87,16 @@ namespace Mission08_7Habbits_App.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public IActionResult Delete(int taskId)
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            Console.Write(taskId);
-            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == taskId);
-            if (recordToDelete != null)
-            {
-                _repo.Tasks.Remove(recordToDelete);
+            Console.WriteLine(id);
+            var recordToDelete = _repo.Tasks.Single(x => x.TaskID == id);
+         
+            
+                _repo.Remove(recordToDelete);
                 _repo.SaveChanges();
-            }
-            else
-            {
-                Console.Write("test");
-            }
+          
 
             return RedirectToAction("Index");
         }

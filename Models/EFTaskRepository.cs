@@ -33,7 +33,7 @@ namespace Mission08_7Habbits_App.Models
 
         public void Remove(Task recordToDelete)
         {
-            _context.Tasks.Remove(recordToDelete);
+            _context.Remove(recordToDelete);
         }
 
         public List<Task> Include(Task task)
