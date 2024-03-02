@@ -6,48 +6,55 @@
 
 <div class="container">
     <form method="POST">
-        <input type="hidden" asp-for="TaskID"/>
+        <input type="hidden" asp-for="TaskID" />
 
-        <div class="form group">
-            <label asp-for="Title">Title:</label>
-            <input asp-for="Title"/>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="Title">Title:</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label asp-for="DueDate">DueDate:</label>
+                <input type="date" asp-for="DueDate" class="form-control" />
+            </div>
         </div>
-        <br />
-        <div class="form group">
-            <label asp-for="DueDate">DueDate:</label>
-            <input asp-for="DueDate"/>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="Quadrant">Quadrant:</label>
+                <select asp-for="Quadrant" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label asp-for="CategoryID">Category:</label>
+                <select asp-for="CategoryID" class="form-control">
+                    <option value="">Select a Category</option>
+                    @foreach (Category category in ViewBag.Categories)
+                    {
+                        <option value="@category.CategoryID">@category.CatName</option>
+                    }
+                </select>
+            </div>
         </div>
-        <br />
-        <div class="form group">
-            <label asp-for="Quadrant">Quadrant:</label>
-            <select asp-for="Quadrant">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="Completed">Completed:</label>
+                <select asp-for="Completed" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
         </div>
-        <br />
-        <div class="form group">
-            <label asp-for="CategoryID">Category:</label>
-            <select asp-for="CategoryID">
-                <option value="">Select a Category</option>
-                @foreach (Category category in ViewBag.Categories)
-                {
-                    <option value="@category.CategoryID">@category.CatName</option>
-                }
-            </select>
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Save Task</button>
+            </div>
         </div>
-        <br />
-        <div class="form group">
-            <label asp-for="Completed">Completed:</label>
-            <select asp-for="Completed">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-        </div>
-        <br />
-        <button type="submit">Save Task</button>
     </form>
-</div> 
-
+</div>
