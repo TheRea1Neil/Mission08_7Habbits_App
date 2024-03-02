@@ -15,9 +15,9 @@
                 <div class="card-header bg-primary text-white">
                     Quadrant I: Important / Urgent
                 </div>
-                <div class="card-body">
+                <div class="card-body table-wrapper">
                     <!-- Tasks for Quadrant I -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-wrapper">
                         <thead class="fw-bold">
                             <tr>
                                 <td>Title</td>
@@ -28,7 +28,7 @@
                                 <td></td>
                             </tr>
                         </thead>
-
+                        <!--Display all the tasks in Quadrant1-->
                         @foreach (var x in Quadrant1)
                         {
                             @if (x.Completed != true)
@@ -63,9 +63,9 @@
                 <div class="card-header bg-success text-white">
                     Quadrant II: Important / Not Urgent
                 </div>
-                <div class="card-body">
+                <div class="card-body table-wrapper">
                     <!-- Tasks for Quadrant II -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-wrapper">
                         <thead class="fw-bold">
                             <tr>
                                 <td>Title</td>
@@ -76,7 +76,7 @@
                                 <td></td>
                             </tr>
                         </thead>
-
+                        <!--Display all the tasks in Quadrant2-->
                         @foreach (var x in Quadrant2)
                         {
                             @if (x.Completed != true)
@@ -111,9 +111,9 @@
                 <div class="card-header bg-warning text-dark">
                     Quadrant III: Not Important / Urgent
                 </div>
-                <div class="card-body">
+                <div class="card-body table-wrapper">
                     <!-- Tasks for Quadrant III -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-wrapper">
                         <thead class="fw-bold">
                             <tr>
                                 <td>Title</td>
@@ -124,12 +124,12 @@
                                 <td></td>
                             </tr>
                         </thead>
-
+                        <!--Display all the tasks in Quadrant3-->
                         @foreach (var x in Quadrant3)
                         {
                             @if (x.Completed != true)
                             {
-                                <tbody>
+                                <tbody class="table-wrapper">
                                     <tr>
                                         <td>@x.Title</td>
                                         <td>@x.DueDate</td>
@@ -159,9 +159,9 @@
                 <div class="card-header bg-dark text-white">
                     Quadrant IV: Not Important / Not Urgent
                 </div>
-                <div class="card-body">
+                <div class="card-body table-wrapper">
                     <!-- Tasks for Quadrant IV -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-wrapper">
                         <thead class="fw-bold">
                             <tr>
                                 <td>Title</td>
@@ -172,7 +172,7 @@
                                 <td></td>
                             </tr>
                         </thead>
-
+                        <!--Display all the tasks in Quadrant4-->
                         @foreach (var x in Quadrant4)
                         {
                             @if (x.Completed != true)
