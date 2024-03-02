@@ -10,11 +10,11 @@ public partial class Task
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int TaskID { get; set; }
-    [Required]
+    [Required(ErrorMessage = "Must give a title")]
     public string Title { get; set; } = null!;
 
     public DateTime? DueDate { get; set; }
-    [Required]
+    [Required, Range(1, 4, ErrorMessage = "Must assign to a quadrant")]
     public int Quadrant { get; set; }
 
     public int? CategoryID { get; set; }

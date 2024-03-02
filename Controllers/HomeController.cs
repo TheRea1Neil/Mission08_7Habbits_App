@@ -14,10 +14,8 @@ namespace Mission08_7Habbits_App.Controllers
 
         public HomeController(iTaskRepository context) //Constructor
         {
-            _repo = context;
+            _repo = context; // Implement the Repository Pattern
         }
-       
-
 
         public IActionResult Index()
         {
@@ -28,29 +26,29 @@ namespace Mission08_7Habbits_App.Controllers
             ViewBag.category = _repo.Categories
                 .ToList();
 
-            ViewBag.Quadrant1 = _repo.Tasks.Where(x => x.Quadrant == 1).ToList();
-            ViewBag.Quadrant2 = _repo.Tasks.Where(x => x.Quadrant == 2).ToList();
-            ViewBag.Quadrant3 = _repo.Tasks.Where(x => x.Quadrant == 3).ToList();
-            ViewBag.Quadrant4 = _repo.Tasks.Where(x => x.Quadrant == 4).ToList();
+            
+            // Seperate tasks based on their Quadrant and save them in ViewBags in order to display in the view
+            ViewBag.Quadrant1 = tasks.Where(x => x.Quadrant == 1).ToList();
+            ViewBag.Quadrant2 = tasks.Where(x => x.Quadrant == 2).ToList();
+            ViewBag.Quadrant3 = tasks.Where(x => x.Quadrant == 3).ToList();
+            ViewBag.Quadrant4 = tasks.Where(x => x.Quadrant == 4).ToList();
             
 
             return View();
         }
 
-        //        <h2>Quadrant 1 Tasks</h2>
-        //@foreach(var task in Model.Quadrant1)
-        //        {
-        //    < p > @task.Name </ p > < !--Replace with actual property names -->}
         [HttpGet]
         public IActionResult CreateTask()
         {
-            ViewBag.Categories = _repo.Categories.ToList();
+            // Save categories in Viewbag in order to display in the view
+            ViewBag.Categories = _repo.Categories.ToList(); 
             return View(new Mission08_7Habbits_App.Models.Task());
         }
 
         [HttpPost]
         public IActionResult CreateTask(Mission08_7Habbits_App.Models.Task _newTask)
         {
+            // If user input meets the required conditions, save the record (task) to database, and then show the saed record in the "Confiramtion" page 
             if (ModelState.IsValid)
             {
                 _repo.AddTask( _newTask);
@@ -60,6 +58,8 @@ namespace Mission08_7Habbits_App.Controllers
 
                 return View("Confirmation", _newTask);
             }
+            // If not, keep the same info user has put in and give them error message
+            // (accomplish by "<div asp-validation-summary="All"></div>" in the view, as well as ErrorMessage in the Model)
             else
             {
                 ViewBag.Categories = _repo.Categories.ToList();
@@ -72,6 +72,7 @@ namespace Mission08_7Habbits_App.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            // Return the selected task for user to edit (based on TaskID)
             var recordToEdit = _repo.Tasks
                 .Single(x => x.TaskID == id);
 
@@ -82,6 +83,7 @@ namespace Mission08_7Habbits_App.Controllers
         [HttpPost]
         public IActionResult Edit(Models.Task update)
         {
+            // update the info for the task and take the user back to Index
             _repo.Update(update);
             _repo.SaveChanges(true);
             return RedirectToAction("Index");
@@ -90,6 +92,7 @@ namespace Mission08_7Habbits_App.Controllers
         [HttpPost]
         public IActionResult Delete(int taskId)
         {
+            // Delelte the selected task based on TaskID
             Console.Write(taskId);
             var recordToDelete = _repo.Tasks.Single(x => x.TaskID == taskId);
             if (recordToDelete != null)
